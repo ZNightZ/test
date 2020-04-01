@@ -48,9 +48,6 @@ app.get("/attendance", function (req, res) {
 app.get("/course", function (req, res) {
         res.sendFile(__dirname + "/views/course.html");
 });
-app.get("/studentattendant", function (req, res) {
-        res.sendFile(__dirname + "/views/studentattendant.html");
-});
 app.get("/", function (req, res) {
         res.sendFile(__dirname + "/views/index.html");
 });
@@ -154,5 +151,19 @@ app.get("/course/list/:year/:semester", function(req, res){
     })
 });
 
-
+// ==> Get course details by courseID
+app.get("/attendance/:courseID", function(req, res){
+    let year = req.params.courseID;
+    let sql = "SELECT DISTINCT course.* week.weekNum,  FROM course, schedule WHERE schedule.year = ? AND schedule.semester = ?";
+    connection.query(sql, [year, semester], function(err, result, fields){
+        if(err){
+            console.log(err);
+            console.log("-------------------------------");
+            res.sendStatus(400);
+        }
+        else{
+            res.send(result);
+        }
+    })
+});
 // ----------------- WEB ADMIN END --------------------- //
