@@ -115,7 +115,7 @@ app.post("/login", function (req, res) {
             console.log("-------------------------------");
         }
         else {
-            res.send("/course");
+            res.sendFile(__dirname + "/views/course.html");
             console.log("Username: " + result[0].username);
             console.log("-------------------------------");
         }
