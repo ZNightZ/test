@@ -86,11 +86,11 @@
 						method:"POST",
 						dataType:"json",
 						data:{username:username,password:password},
-						success:function(response) {
-							console.log(response)
-						},error:function(data,success,failure){alert("errpr")}
-						
-					});
+					}).done(function(response){
+						alert("kaa")
+					}).fail(function(){
+						alert("haha")
+					})
 			});
 		});
 		</script>

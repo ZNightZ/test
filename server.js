@@ -110,22 +110,20 @@ app.post("/login", function (req, res) {
             console.log("-------------------------------");
         }
         if (result.length != 1) {
-            res.status(405).send("Wrong username or password!.");
+            res.sendStatus(405);
             console.log("No data found in database");
             console.log("-------------------------------");
         }
         else {
-            res.end(__dirname + "/course.html");
+            res.sendStatus(200);
             console.log("Username: " + result[0].username);
             console.log("-------------------------------");
         }
     });
 });
 
-// ==> Get Course by year and semester
+// ==> Get Course
 app.get("/course/list", function (req, res) {
-    let year = req.body.year;
-    let semester = req.body.semester;
     let sql = "SELECT * FROM course";
     connection.query(sql, [], function(err, result, fields){
         if(err){
@@ -139,9 +137,22 @@ app.get("/course/list", function (req, res) {
     })
 });
 
-// ==> 
-app.get("/course/list/:search", function(req, res){
-    let search = req.params.search;
-    let sql = "SELECT * FROM course WHERE courseName = ? OR courseCode = ?";
-})
+// ==> Get course by semester or year
+app.get("/course/list/:year/:semester", function(req, res){
+    let year = req.body.year;
+    let semester = req.body.semester;
+    let sql = "SELECT course.* schedule.year, schedule.semester FROM course, schedule WHERE schedule.year = ? AND schedule.semester = ?";
+    connection.query(sql, [year, semester], function(err, result, fields){
+        if(err){
+            console.log(err);
+            console.log("-------------------------------");
+            res.sendStatus(400);
+        }
+        else{
+            res.send(result);
+        }
+    })
+});
+
+
 // ----------------- WEB ADMIN END --------------------- //
