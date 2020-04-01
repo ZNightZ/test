@@ -1,0 +1,28 @@
+### Check login
+POST http://192.168.1.44:3800/get
+content-type: application/json
+
+{
+    "cardNum": "838427136258"
+}
+
+### Check GET
+GET http://localhost:8088/visitor/getDay/2017
+content-type: application/json
+
+### Delete
+DELETE http://localhost:8088/cabinet/delete/8
+content-type: application/json
+
+
+### Check Update
+PUT http://localhost:8088/cabinet/update/9
+content-type: application/json
+
+{
+    "txt_number": "5",
+    "image_field": "test",
+    "txt_desc_en_cab": "testEng",
+    "txt_desc_th_cab": "Thai",
+    "status": "0"
+}
