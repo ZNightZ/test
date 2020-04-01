@@ -1,0 +1,98 @@
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+
+body{
+    background: #568EA3;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+body.cabinet{
+    background: #FFE8D1;
+}
+
+header{
+    padding: 2.5rem 0;
+    text-align: center;
+    background-image: url('../images/header.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+header .h-box{
+    display: inline-block;
+    background: rgba(0, 0, 0, .6);
+    padding: .5rem 1.5rem;
+    color: white;
+    border-radius: .5rem;
+}
+
+header h3{
+    font-size: 1.6rem;
+}
+
+
+.container-fluid{
+   
+}
+
+main{
+    padding: 1rem;
+    flex: 1;
+}
+
+a.lang{
+    text-decoration: none;
+    color: white;
+    background: #2E282A;
+    padding: .5rem;
+    border-radius: .5rem;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+}
+
+.box{
+    margin-top: 1rem;
+    background: #2E282A;
+    border-radius: .5rem;
+    padding: 1rem;
+    color: white;
+    text-align: center;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+}
+
+.box img{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.cabinet .box{
+    background: #568EA3;
+}
+
+footer{
+    background: #2E282A;
+    color: white;
+}
+
+footer > .row > div{
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.btn-more{
+    color: #568EA3;
+    background: #FFE8D1;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}

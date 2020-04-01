@@ -1,0 +1,451 @@
+
+
+html,body
+{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; 
+}
+
+
+
+body{
+    
+    color: #4A4A4A;
+    background: #F0F0F7;
+}
+
+header{
+    padding-left: 1.5em;
+    padding-top: 1em;
+    padding-bottom: .8em;
+    background-color: white;
+    color: black;
+    box-shadow: 0px 2px 3px rgba(0,0,0,.2);
+    position: relative;
+    z-index: 99;
+    
+}
+
+header h1{
+    font-size: 1.2em;
+}
+
+
+aside, main{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.main-container{
+    margin-left: 16.666667%;
+}
+aside{
+    background-color: #3DD9D4;
+    box-shadow: 2px 0px 3px rgba(0,0,0,.2);
+    position: fixed !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transition: padding-top .2s linear;
+    -moz-transition: padding-top .2s linear;
+    -webkit-transition: padding-top .2s linear;
+    padding-top: 60px;
+
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+
+}
+
+main .page-bar{
+    background-color: white;
+    padding: .8em 2em;
+    box-shadow: 0px 2px 3px rgba(0,0,0,.2);
+}
+
+main .content{
+    padding: 2em;
+}
+
+.main-container{
+    background: #F0F0F7;
+}
+
+.bg-green2{
+    background-color: #40B3A2;
+}
+
+.bg-pink{
+    background-color: #C38D9D;
+}
+
+.bg-blue{
+    background-color: #4D97F6;
+}
+
+.bg-red{
+    background-color: #E94050;
+}
+
+.bg-green{
+    background-color: #38C558;
+}
+
+.text-green{
+    color: #38C558;
+}
+.text-red{
+    color: #E94050;
+}
+.text-orange{
+    color: #E27D5F;
+}
+
+
+.bg-orange{
+    background-color: #E27D5F;
+}
+.btn.bg-orange:hover{
+    background-color: rgb(204, 109, 81);
+}
+
+.db-box{
+    padding: 1em;
+    color: white;
+}
+
+.navbar{
+    padding: 0;
+}
+
+nav{
+    padding-top: 1.2rem !important;
+}
+
+nav ul{
+    width: 100%;
+    position: relative;
+}
+nav li{
+    padding: .6em 1em;
+    position: relative;
+}
+nav a{
+    color: black;
+}
+
+.nav-link{
+    font-size: .95rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+}
+
+.nav-small{
+    color: black;
+    font-size: 30;
+    padding: .5rem 2rem;
+}
+
+.btn-delete{
+    position: absolute;
+    bottom: 0;
+}
+
+.btn-delete a:hover{
+    color: grey;
+}
+
+nav li.nav-item:hover, nav .active{
+    background-color: rgba(0, 0, 0, .2);
+   
+}
+
+nav li.nav-item:hover::before, nav .active::before { 
+    content: '';
+    width: .5em;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+
+
+nav li.nav-item:hover a{
+    color: white;
+}
+
+nav i{
+    color: white;
+    font-size: .9em;
+    margin-right: .5em;
+}
+
+.db-box{
+    border-radius: .2em;
+    box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+}
+
+.db-box i{
+    float: right;
+}
+
+.db-box .row{
+    margin-top: .5em;
+}
+
+.db-box .row > div{
+    padding: 0 1em;
+}
+
+.box{
+    width: 100%;
+    height: auto;
+    border-radius: .2em;
+    background: white;
+    box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+    padding: 2em;
+}
+
+.btnView, .btnDelete, .btnEdit{
+    color: white;
+}
+
+.table{
+    background: white;
+    box-shadow: 0px 2px 3px rgba(0,0,0,.3);
+}
+
+.table thead{
+    background: #40B3A2;
+    color: white;
+}
+
+.table td{
+    padding: 2em 0;
+    vertical-align: middle;
+}
+
+.table button i{
+    position: relative;
+    bottom: -1.5px;
+    margin-right: 1px;
+}
+.boxBtn {
+    margin-bottom: 10px;
+}
+.boxBtn button{
+    margin-left: 10px;
+}
+
+.page-bar{
+    position: relative;
+}
+
+.page-bar h4{
+    display: inline;
+}
+
+.page-bar li{
+    float: left;
+}
+
+.page-bar li:after{
+    content: "/";
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.page-bar li:last-child:after{
+    content: "";
+    margin: 0;
+}
+#displayArtifact{
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.drop-image{
+    display: table;
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    color: #2E3E4E;
+    text-align: center;
+    background: #d1d1d1 !important;
+    font-size: 1.2em;
+    border: 2px dashed rgba(0,0,0,0.3) !important;
+}
+
+.drop-image .dz-default{
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    top: -10px;
+}
+.dropzone{
+    position: relative;
+}
+.edit-image #preImage{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+}
+.edit-image:hover #preImage{
+    display: none !important;
+}
+
+#chart{
+    height: 350px;
+}
+
+#year{
+    margin-bottom: -30px;
+    position: relative;
+    z-index: 99;
+}
+
+
+#bg {
+    height: 100%;
+    background: white;
+    text-align: center;
+}
+/* #bg img{
+    width: 240;
+    height: 120;
+    max-width: 762px;
+} */
+
+.login-container{
+    margin-top: 5em; 
+    width: 70%;
+    
+    
+}
+
+.clear{
+    clear: both;
+    height: 1px;
+}
+#breadcrumb{
+    margin-top: 3px;
+}
+nav li.btn-delete i{
+    display: none;
+}
+
+@media (max-width: 990px){
+    .nav-link, nav li{
+        padding-left: .5rem;
+        padding-right: .5rem;
+    }
+    nav li.nav-item:hover::before, nav .active::before{
+        display: none;
+    }
+    table .btn{
+        margin-bottom: 10px;
+    }
+}
+@media (max-width: 767px){
+    #bg{
+        display: none;
+        height: 20px;
+    }
+    #bg img{
+        display: none;
+    }
+    .login-container{
+        width: 100%;
+        max-width: 300px;
+    }
+    .login-container h2{
+        margin-top: 0 !important;
+    }
+    .db-box{
+        margin-bottom: 10px;
+    }
+    .form-login .btn{
+        width: 100%;
+    }
+    .login-header{
+        height: 20px;
+        background:#7EC3B0;
+    }
+    nav{
+        padding-top: .8rem !important;
+    }
+    .nav-small{
+        text-align: center;
+        padding: .5rem .5rem;
+    }
+    .nav-link {
+        padding: .1rem;
+        
+        text-align: center;
+        font-size: .8rem;
+    }
+    .nav-link i{
+        display: block;
+        font-size: 1rem;
+        margin-bottom: .4rem;
+    }
+    
+    nav li.nav-item:hover::before, nav .active::before{
+        display: none;
+    }
+
+    nav li.btn-delete{
+        padding: 0 .8rem;
+    }
+
+    nav li.btn-delete a{
+        height: 40px;
+        padding-top: .5rem;
+        font-weight: bold;
+    }
+    #year{
+        margin-right: -20px;
+    }
+    .d-inline-block input{
+        width: 100% !important;
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 576px){
+    header h1{
+        font-size: 1.1em;
+    }
+
+    nav li {
+        padding: .6em .1em;
+    }
+    .nav-link i{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    nav li.btn-delete span{
+        display: none;
+    }
+    nav li.btn-delete{
+        padding: 0 .3rem;
+    }
+    nav li.btn-delete i{
+        display: block;
+        margin-bottom: 0;
+    }
+    nav li.btn-delete a{
+        height: auto;
+        padding: .5rem 0;
+    }
+    .box{
+        padding: 2em .1em;
+    }
+}
