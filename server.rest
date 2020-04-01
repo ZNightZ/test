@@ -28,9 +28,12 @@ content-type: application/json
     "status": "0"
 }
 
-POST http://localhost:8088/login
+
+### Check
+POST http://localhost:3800/login
 content-type: application/json
+
 {
     "username":"admin1",
-    "password":"1234"
+    "password":"12345"
 }

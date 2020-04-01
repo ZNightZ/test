@@ -41,13 +41,13 @@
 				<form class="login100-form validate-form">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Username</span>
-						<input class="input100" type="text" name="username" placeholder="Enter username" id="username">
+						<input class="input100" type="text" placeholder="Username" id="username">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="pass" placeholder="Enter password" id="password">
+						<input class="input100" type="password" placeholder="Enter password" id="password">
 						<span class="focus-input100"></span>
 					</div>
 					<div class="container-login100-form-btn">
@@ -79,22 +79,17 @@
 	<script>
 	$(document).ready(function(){
 		$("#loginbtn").click(function(){
-			var username = username.val();
-			var password = password.val();
-			console.log(username,password);
-				// $.ajax({
-				// 	url:"192.168.1.45/login",
-				// 	type:"POST",
-				// 	data:{username:username,
-				// 		password:password},
-				// 	Success: function(response){
-				// 		if(response==1){
-				// 			window.location.replace("./views/course.html")
-				// 		} else{
-				// 			alert("something wrong")
-				// 		}
-				// 	}
-
+			var username = $("#username").val();
+			var password = $("#password").val();
+			console.log(username)
+				$.ajax({
+					url:"http://localhost:3800/login",
+					type:"POST",
+					data:{username:username,password:password},
+					success:function(response) {
+						alert("hahah")
+					}
+				});
 		});
 	});
 	</script>
