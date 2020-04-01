@@ -1,9 +1,10 @@
 ### Check login
-POST http://192.168.1.44:3800/get
+POST http://192.168.1.45:3800/login
 content-type: application/json
 
 {
-    "cardNum": "838427136258"
+    "username": "admin1",
+    "password": "12345"
 }
 
 ### Check GET

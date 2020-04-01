@@ -116,7 +116,7 @@ app.post("/login", function (req, res) {
         }
         else {
             res.sendStatus(200);
-            console.log("Username: " + result.data[0].username);
+            console.log("Username: " + result[0].username);
             console.log("-------------------------------");
         }
     });
@@ -126,7 +126,17 @@ app.post("/login", function (req, res) {
 app.get("/course/:year/:semester", function (req, res) {
     let year = req.params.year;
     let semester = req.params.semester;
-    let sql = "SELECT course.courseName, course";
+    let sql = "SELECT course.courseCode, course.courseName FROM course, schedule WHERE schedule.year = ? AND schedule.semester = ?";
+    connection.query(sql, [year, semester], function(err, result, fields){
+        if(err){
+            console.log(err);
+            console.log("-------------------------------");
+            res.sendStatus(400);
+        }
+        else{
+            res.send(result);
+        }
+    })
 });
 
 // ----------------- WEB ADMIN END --------------------- //
