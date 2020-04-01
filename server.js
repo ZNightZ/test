@@ -5,10 +5,21 @@ const mysql = require('mysql');
 const { format } = require('date-fns');
 var path = require('path');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
+let sess;
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use("/scripts", express.static(__dirname + "/scripts"));
+app.use("/assets", express.static(__dirname + "/assets"));
+app.use("/styles", express.static(__dirname + "/styles"));
+app.use("/vendor", express.static(__dirname + "/vendor"));
+app.use("/fonts", express.static(__dirname + "/fonts"));
+app.use("/css", express.static(__dirname + "/css"));
+app.use("/js", express.static(__dirname + "/js"));
+app.use(session({
+    secret: 'mysecretcode'
+}));
 
 var connection = mysql.createConnection({
     host: 'localhost',
@@ -31,14 +42,17 @@ app.listen(port, function () {
 });
 // ----------------------------------------------------------- //
 // ----------------- GET ROUTES START ----------------- //
-app.get("/attendance", function(req, res){
-    res.sendFile(__dirname + "/test/views/attendance.html");
+app.get("/attendance", function (req, res) {
+        res.sendFile(__dirname + "/views/attendance.html");   
 });
-app.get("/course", function(req, res){
-    res.sendFile(__dirname + "/test/views/course.html");
+app.get("/course", function (req, res) {
+        res.sendFile(__dirname + "/views/course.html");
 });
-app.get("/studentattendant", function(req, res){
-    res.sendFile(__dirname + "/test/views/studentattendant.html");
+app.get("/studentattendant", function (req, res) {
+        res.sendFile(__dirname + "/views/studentattendant.html");
+});
+app.get("/", function (req, res) {
+        res.sendFile(__dirname + "/views/login.html");
 });
 // ----------------- GET ROUTES END ------------------- //
 // --------------------------------------------------------------------------------------------------------------- //
@@ -77,7 +91,7 @@ app.post("/get", function (req, res) {
                     console.log("Student status has been updated.");
                     console.log("-------------------------------");
                 }
-                })
+            })
         }
     })
 });
@@ -85,32 +99,34 @@ app.post("/get", function (req, res) {
 // --------------------------------------------------------------------------------------------------------------- //
 // ----------------- WEB ADMIN START ------------------- //
 // ==> Login
-app.post("/login", function(req, res){
+app.post("/login", function (req, res) {
     let username = req.body.username;
     let password = req.body.password;
     let sql = "SELECT * FROM admin WHERE username = ? AND password = ?";
-    connection.query(sql, [username, password], function(err, result, fields){
-        if(err){
+    connection.query(sql, [username, password], function (err, result, fields) {
+        if (err) {
             res.sendStatus(400);
             console.log(err);
             console.log("-------------------------------");
         }
-        if(result.length != 1){
+        if (result.length != 1) {
             res.status(405).send("Wrong username or password!.");
             console.log("No data found in database");
             console.log("-------------------------------");
         }
-        else{
+        else {
             res.sendStatus(200);
-            console.log("Username: "+ result.data[0].username);
+            console.log("Username: " + result.data[0].username);
             console.log("-------------------------------");
         }
     });
 });
 
 // ==> Get Course by year and semester
-app.get("/course/:year/:semester", function(req, res){
-    
-})
+app.get("/course/:year/:semester", function (req, res) {
+    let year = req.params.year;
+    let semester = req.params.semester;
+    let sql = "SELECT course.courseName, course";
+});
 
 // ----------------- WEB ADMIN END --------------------- //
