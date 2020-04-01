@@ -115,7 +115,7 @@ app.post("/login", function (req, res) {
             console.log("-------------------------------");
         }
         else {
-            res.sendStatus(200);
+            res.send("/course");
             console.log("Username: " + result[0].username);
             console.log("-------------------------------");
         }
@@ -126,8 +126,8 @@ app.post("/login", function (req, res) {
 app.get("/course/list", function (req, res) {
     let year = req.body.year;
     let semester = req.body.semester;
-    let sql = "SELECT course.courseCode, course.courseName FROM course, schedule WHERE schedule.year = ? AND schedule.semester = ?";
-    connection.query(sql, [year, semester], function(err, result, fields){
+    let sql = "SELECT * FROM course";
+    connection.query(sql, [], function(err, result, fields){
         if(err){
             console.log(err);
             console.log("-------------------------------");
@@ -139,8 +139,9 @@ app.get("/course/list", function (req, res) {
     })
 });
 
-// ==> View course
-app.get("", function(req, res){
-
+// ==> 
+app.get("/course/list/:search", function(req, res){
+    let search = req.params.search;
+    let sql = "SELECT * FROM course WHERE courseName = ? OR courseCode = ?";
 })
 // ----------------- WEB ADMIN END --------------------- //
