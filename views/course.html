@@ -21,7 +21,14 @@
     <script src="/scripts/bootbox.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url: 'http://localhost:3800/course/list',
+                method:"GET",
+            })
+        });
+    </script>
     <style>
         .boxBtn {
             margin-bottom: 10px;
@@ -191,9 +198,7 @@
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
 <script>
-    $(document).ready(function() {
-    $('#example').DataTable();
-} );
+    
 </script>
 
 </html>

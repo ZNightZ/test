@@ -81,15 +81,16 @@
 			$("#loginbtn").click(function(){
 				var username = $("#username").val();
 				var password = $("#password").val();
-				console.log(username)
 					$.ajax({
 						url:"http://localhost:3800/login",
-						type:"POST",
+						method:"POST",
+						dataType:"json",
 						data:{username:username,password:password},
-						success:function(response) {
-							window.location.href("./course.html");
-						}
-					});
+					}).done(function(response){
+						alert("kaa")
+					}).fail(function(){
+						alert("haha")
+					})
 			});
 		});
 		</script>

@@ -37,3 +37,10 @@ content-type: application/json
     "username":"admin1",
     "password":"12345"
 }
+
+### Check
+GET http://localhost:3800/course/list
+
+{
+    
+}

@@ -112,7 +112,7 @@ app.post("/login", function (req, res) {
             console.log("-------------------------------");
         }
         else {
-            res.end("/course");
+            res.sendStatus(200);
             console.log("Username: " + result[0].username);
             console.log("-------------------------------");
         }
