@@ -52,7 +52,7 @@ app.get("/studentattendant", function (req, res) {
         res.sendFile(__dirname + "/views/studentattendant.html");
 });
 app.get("/", function (req, res) {
-        res.sendFile(__dirname + "/views/login.html");
+        res.sendFile(__dirname + "/views/index.html");
 });
 // ----------------- GET ROUTES END ------------------- //
 // --------------------------------------------------------------------------------------------------------------- //
@@ -115,7 +115,7 @@ app.post("/login", function (req, res) {
             console.log("-------------------------------");
         }
         else {
-            res.sendStatus(200);
+            res.send("/course");
             console.log("Username: " + result[0].username);
             console.log("-------------------------------");
         }
@@ -123,11 +123,11 @@ app.post("/login", function (req, res) {
 });
 
 // ==> Get Course by year and semester
-app.get("/course/:year/:semester", function (req, res) {
-    let year = req.params.year;
-    let semester = req.params.semester;
-    let sql = "SELECT course.courseCode, course.courseName FROM course, schedule WHERE schedule.year = ? AND schedule.semester = ?";
-    connection.query(sql, [year, semester], function(err, result, fields){
+app.get("/course/list", function (req, res) {
+    let year = req.body.year;
+    let semester = req.body.semester;
+    let sql = "SELECT * FROM course";
+    connection.query(sql, [], function(err, result, fields){
         if(err){
             console.log(err);
             console.log("-------------------------------");
@@ -139,4 +139,9 @@ app.get("/course/:year/:semester", function (req, res) {
     })
 });
 
+// ==> 
+app.get("/course/list/:search", function(req, res){
+    let search = req.params.search;
+    let sql = "SELECT * FROM course WHERE courseName = ? OR courseCode = ?";
+})
 // ----------------- WEB ADMIN END --------------------- //
