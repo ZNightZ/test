@@ -52,7 +52,7 @@ app.get("/studentattendant", function (req, res) {
         res.sendFile(__dirname + "/views/studentattendant.html");
 });
 app.get("/", function (req, res) {
-        res.sendFile(__dirname + "/views/login.html");
+        res.sendFile(__dirname + "/views/index.html");
 });
 // ----------------- GET ROUTES END ------------------- //
 // --------------------------------------------------------------------------------------------------------------- //
@@ -123,9 +123,9 @@ app.post("/login", function (req, res) {
 });
 
 // ==> Get Course by year and semester
-app.get("/course/:year/:semester", function (req, res) {
-    let year = req.params.year;
-    let semester = req.params.semester;
+app.get("/course/list", function (req, res) {
+    let year = req.body.year;
+    let semester = req.body.semester;
     let sql = "SELECT course.courseCode, course.courseName FROM course, schedule WHERE schedule.year = ? AND schedule.semester = ?";
     connection.query(sql, [year, semester], function(err, result, fields){
         if(err){
@@ -139,4 +139,8 @@ app.get("/course/:year/:semester", function (req, res) {
     })
 });
 
+// ==> View course
+app.get("", function(req, res){
+
+})
 // ----------------- WEB ADMIN END --------------------- //
