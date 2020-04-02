@@ -82,14 +82,14 @@
 				var username = $("#username").val();
 				var password = $("#password").val();
 					$.ajax({
-						url:"http://localhost:3800/login",
+						url:"https://localhost:3800/login",
 						method:"POST",
 						dataType:"json",
 						data:{username:username,password:password},
-					}).done(function(response){
-						alert("kaa")
-					}).fail(function(){
-						alert("haha")
+					}).done(function(response,xhr,state){
+						console.log(response)
+					}).fail(function(xhr,state){
+						console.log(xhr)
 					})
 			});
 		});

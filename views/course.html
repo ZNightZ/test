@@ -26,6 +26,10 @@
             $.ajax({
                 url: 'http://localhost:3800/course/list',
                 method:"GET",
+            }).done(function(response,xhr,state){
+                console.log(rsponse)
+            }).fail(function(xhr,state){
+                console.log(xhr)
             })
         });
     </script>
