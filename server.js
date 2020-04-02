@@ -48,6 +48,9 @@ app.get("/attendance", function (req, res) {
 app.get("/course", function (req, res) {
         res.sendFile(__dirname + "/views/course.html");
 });
+app.get("/home", function (req, res) {
+    res.sendFile(__dirname + "/views/home.html");
+});
 app.get("/", function (req, res) {
         res.sendFile(__dirname + "/views/index.html");
 });
@@ -120,8 +123,8 @@ app.post("/login", function (req, res) {
 });
 
 // ==> Get Course
-app.get("/course/list", function (req, res) {
-    let sql = "SELECT * FROM course";
+app.get("/home/list", function (req, res) {
+    let sql = "SELECT DISTINCT course.*, schedule.year, schedule.semester FROM ((week INNER JOIN course ON week.courseID = course.courseID) INNER JOIN schedule ON week.scheduleID = schedule.scheduleID)";
     connection.query(sql, [], function(err, result, fields){
         if(err){
             console.log(err);
@@ -135,11 +138,27 @@ app.get("/course/list", function (req, res) {
 });
 
 // ==> Get course by semester or year
-app.get("/course/list/:year/:semester", function(req, res){
-    let year = req.body.year;
-    let semester = req.body.semester;
-    let sql = "SELECT course.* schedule.year, schedule.semester FROM course, schedule WHERE schedule.year = ? AND schedule.semester = ?";
-    connection.query(sql, [year, semester], function(err, result, fields){
+// app.get("/home/list/:year/:semester", function(req, res){
+//     let year = req.params.year;
+//     let semester = req.params.semester;
+//     let sql = "SELECT DISTINCT course.*, schedule.year, schedule.semester FROM ((week INNER JOIN course ON week.courseID = course.courseID) INNER JOIN schedule ON week.scheduleID = schedule.scheduleID) WHERE schedule.year = ? AND schedule.semester = ?";
+//     connection.query(sql, [year, semester], function(err, result, fields){
+//         if(err){
+//             console.log(err);
+//             console.log("-------------------------------");
+//             res.sendStatus(400);
+//         }
+//         else{
+//             res.send(result);
+//         }
+//     })
+// });
+
+// ==> Get course week by courseID
+app.get("/course/:courseID", function(req, res){
+    let courseID = req.params.courseID;
+    let sql = "SELECT DISTINCT week.weekNum, course.courseName FROM week INNER JOIN course ON week.courseID = course.courseID WHERE course.courseID = ?";
+    connection.query(sql, [courseID], function(err, result, fields){
         if(err){
             console.log(err);
             console.log("-------------------------------");
@@ -151,11 +170,12 @@ app.get("/course/list/:year/:semester", function(req, res){
     })
 });
 
-// ==> Get course details by courseID
-app.get("/attendance/:courseID", function(req, res){
-    let year = req.params.courseID;
-    let sql = "SELECT DISTINCT course.* week.weekNum,  FROM course, schedule WHERE schedule.year = ? AND schedule.semester = ?";
-    connection.query(sql, [year, semester], function(err, result, fields){
+// ==> Get week attendance by weekNum of courseID
+app.get("/course/:courseID/:weekNum", function(req, res){
+    let courseID = req.params.courseID;
+    let weekNum = req.params.weekNum;
+    let sql = "SELECT DISTINCT week.weekNum, student.studentCode, student.studentName, CASE WHEN week.studentStatus = 0 THEN 'Absent' WHEN week.studentStatus = 1 THEN 'Present' END AS studentStatus, course.courseName, course.courseDay, course.startCourse, course.finishCourse FROM ((week INNER JOIN student ON week.studentID = student.studentID) INNER JOIN course ON week.courseID = course.courseID) WHERE week.weekNum = ? AND course.courseID = ? ORDER BY student.studentCode ASC";
+    connection.query(sql, [weekNum, courseID], function(err, result, fields){
         if(err){
             console.log(err);
             console.log("-------------------------------");
