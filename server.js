@@ -138,21 +138,21 @@ app.get("/home/list", function (req, res) {
 });
 
 // ==> Get course by semester or year
-// app.get("/home/list/:year/:semester", function(req, res){
-//     let year = req.params.year;
-//     let semester = req.params.semester;
-//     let sql = "SELECT DISTINCT course.*, schedule.year, schedule.semester FROM ((week INNER JOIN course ON week.courseID = course.courseID) INNER JOIN schedule ON week.scheduleID = schedule.scheduleID) WHERE schedule.year = ? AND schedule.semester = ?";
-//     connection.query(sql, [year, semester], function(err, result, fields){
-//         if(err){
-//             console.log(err);
-//             console.log("-------------------------------");
-//             res.sendStatus(400);
-//         }
-//         else{
-//             res.send(result);
-//         }
-//     })
-// });
+app.get("/home/list/:year/:semester", function(req, res){
+    let year = req.params.year;
+    let semester = req.params.semester;
+    let sql = "SELECT DISTINCT course.*, schedule.year, schedule.semester FROM ((week INNER JOIN course ON week.courseID = course.courseID) INNER JOIN schedule ON week.scheduleID = schedule.scheduleID) WHERE schedule.year = ? AND schedule.semester = ?";
+    connection.query(sql, [year, semester], function(err, result, fields){
+        if(err){
+            console.log(err);
+            console.log("-------------------------------");
+            res.sendStatus(400);
+        }
+        else{
+            res.send(result);
+        }
+    })
+});
 
 // ==> Get course week by courseID
 app.get("/course/:courseID", function(req, res){

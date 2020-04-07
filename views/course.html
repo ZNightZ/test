@@ -21,18 +21,6 @@
     <script src="/scripts/bootbox.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $.ajax({
-                url: 'http://localhost:3800/course/list',
-                method:"GET",
-            }).done(function(response,xhr,state){
-                console.log(rsponse)
-            }).fail(function(xhr,state){
-                console.log(xhr)
-            })
-        });
-    </script>
     <style>
         .boxBtn {
             margin-bottom: 10px;
@@ -202,7 +190,22 @@
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
 <script>
-    
+        $(document).ready(function(){
+            $.ajax({
+                url: 'http://localhost:3800/home/list',
+                method:"GET",
+            }).done(function(data,state,xhr){
+                console.log(data)
+                for (i=0; i<data.length; i++) {
+                $("#coursecode").html(data[i].courseCode)
+                $("#coursename").html(data[i].courseName)
+                $("#professor").html(data[i].professorName)
+                console.log(data[i]);
+                }
+            }).fail(function(xhr,state){
+                console.log(xhr)
+            })
+        });
 </script>
 
 </html>

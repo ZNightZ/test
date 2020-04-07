@@ -108,11 +108,16 @@
                                     aria-expanded="false">
                                     <span class="no-icon">YEARS</span>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">2020</a>
-                                    <a class="dropdown-item" href="#">2019</a>
-                                    <a class="dropdown-item" href="#">2018</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="selectyear">
+                                        <a class="dropdown-item" href="#" value="2019">2019</a>
+                                        <a class="dropdown-item" href="#" value="2020">2020</a>
                                 </div>
+                                <!-- <div>
+                                    <select name="" id="select">
+                                            <option value="2019">Mr</option>
+                                            <option value="2020">Mrs</option>
+                                    </select>
+                                </div>> -->
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="http://example.com"
@@ -120,10 +125,9 @@
                                     aria-expanded="false">
                                     <span class="no-icon">SEMESTER</span>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="#">1</a>
-                                    <a class="dropdown-item" href="#">2</a>
-                                    <a class="dropdown-item" href="#">3</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="semester">
+                                    <a class="dropdown-item" href="#" value="1">1</a>
+                                    <a class="dropdown-item" href="#" value="2">2</a>
                                 </div>
                             </li>
 
@@ -155,63 +159,47 @@
                               </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="card" style="width: 18rem;border-radius: 20px;">
-                                <div class="card-body">
-                                  <h5 class="card-title">2302201</h5>
-                                  <p class="card-text">Understanding Global Society</p>
-                                  <p class="card-text">Dr.Surapol Utama</p>
-                                  <a href="#" class="card-link">View</a>
-                                </div>
-                              </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card" style="width: 18rem;border-radius: 20px;">
-                                <div class="card-body">
-                                  <h5 class="card-title">2302201</h5>
-                                  <p class="card-text">Understanding Global Society</p>
-                                  <p class="card-text">Dr.Surapol Utama</p>
-                                  <a href="#" class="card-link">View</a>
-                     
-                                </div>
-                              </div>
-                        </div>
-                    </div>
-             </div>
-             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card" style="width: 18rem;border-radius: 20px;">
-                            <div class="card-body">
-                              <h5 class="card-title">2302201</h5>
-                              <p class="card-text">Understanding Global Society</p>
-                              <p class="card-text">Dr.Surapol Utama</p>
-                              <a href="#" class="card-link">View</a>
+                                <div class="card" style="width: 18rem;border-radius: 20px;">
+                                    <div class="card-body">
+                                      <h5 class="card-title" id="coursecode1">2302201</h5>
+                                      <p class="card-text" id="coursename1">Understanding Global Society</p>
+                                      <p class="card-text" id="professor1">Dr.Surapol Utama</p>
+                                      <a href="#" class="card-link">View</a>
+                                    </div>
+                                  </div>
                             </div>
-                          </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card" style="width: 18rem;border-radius: 20px;">
-                            <div class="card-body">
-                              <h5 class="card-title">2302201</h5>
-                              <p class="card-text">Understanding Global Society</p>
-                              <p class="card-text">Dr.Surapol Utama</p>
-                              <a href="#" class="card-link">View</a>
+                            <div class="col-md-4">
+                                <div class="card" style="width: 18rem;border-radius: 20px;">
+                                    <div class="card-body">
+                                      <h5 class="card-title" id="coursecode1">2302201</h5>
+                                      <p class="card-text" id="coursename1">Understanding Global Society</p>
+                                      <p class="card-text" id="professor1">Dr.Surapol Utama</p>
+                                      <a href="#" class="card-link">View</a>
+                                    </div>
+                                  </div>
                             </div>
-                          </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card" style="width: 18rem;border-radius: 20px;">
-                            <div class="card-body">
-                              <h5 class="card-title">2302201</h5>
-                              <p class="card-text">Understanding Global Society</p>
-                              <p class="card-text">Dr.Surapol Utama</p>
-                              <a href="#" class="card-link">View</a>
+                            <div class="col-md-4">
+                                <div class="card" style="width: 18rem;border-radius: 20px;">
+                                    <div class="card-body">
+                                      <h5 class="card-title" id="coursecode">2302201</h5>
+                                      <p class="card-text" id="coursename">Understanding Global Society</p>
+                                      <p class="card-text" id="professor">Dr.Surapol Utama</p>
+                                      <a href="#" class="card-link">View</a>
+                                    </div>
+                                  </div>
                             </div>
-                          </div>
+                            <div class="col-md-4">
+                                <div class="card" style="width: 18rem;border-radius: 20px;">
+                                    <div class="card-body">
+                                      <h5 class="card-title" id="coursecode">2302201</h5>
+                                      <p class="card-text" id="coursename">Understanding Global Society</p>
+                                      <p class="card-text" id="professor">Dr.Surapol Utama</p>
+                                      <a href="#" class="card-link">View</a>
+                                    </div>
+                                  </div>
+                            </div>
                     </div>
                 </div>
-            </div>
-
             <footer class="footer" style="bottom:0;width:100%;left:0;position:fixed">
                 <div class="container-fluid">
                         <p class="copyright text-center" style="text-align: center;">
@@ -240,23 +228,45 @@
 <script src="../assets/js/demo.js"></script>
 <script>
         $(document).ready(function(){
+            var year = 2020
+            var semester = 1
             $.ajax({
-                url: 'http://localhost:3800/course/list',
+                url: 'http://localhost:3800/home/list/'+year+"/"+semester,
                 method:"GET",
-            }).done(function(data,state,xhr){
-                console.log(data)
-                let index=0
-                $.each(data, function(index, data){
-                    data.index = data.index+1;
-                    index++;
-                    data.action=" <a href='course.html' class='card-link'>View</a>";
-                });
-                $("#coursecode").html(data[0].courseCode)
-                $("#coursename").html(data[0].courseName)
-                $("#professor").html(data[0].professorName)
-            }).fail(function(xhr,state){
-                console.log(xhr)
+                dataType:"json",
+                data:{year: $("#selectyear").val(),
+                     semester: $("#semestter").val()
+                },
+                success:function(response){
+                console.log(response[0].courseName)
+                $("#coursecode").html(response[0].courseCode)
+                $("#coursename").html(response[0].courseName)
+                $("#professor").html(response[0].professorName)
+                $("#coursecode1").html(response[1].courseCode)
+                $("#coursename1").html(response[1].courseName)
+                $("#professor1").html(response[1].professorName)
+                },fail:function(xhr){
+                    console.log(xhr)
+                }
+
             })
+
+            // $.ajax({
+            //     url: 'http://localhost:3800/home/list',
+            //     method:"GET",
+            // }).done(function(data,state,xhr){
+            //     console.log(data)
+            //     $("#coursecode").html(data[0].courseCode)
+            //     $("#coursename").html(data[0].courseName)
+            //     $("#professor").html(data[0].professorName)
+            //     $("#coursecode1").html(data[1].courseCode)
+            //     $("#coursename1").html(data[1].courseName)
+            //     $("#professor1").html(data[1].professorName)
+            // }).fail(function(xhr,state){
+            //     console.log(xhr)
+            // })
+
+            
         });
     </script>
 

@@ -44,3 +44,16 @@ GET http://localhost:3800/course/list
 {
     
 }
+
+##Check
+GET http://localhost:3800/home/list/2019/1
+{
+    "year":"2019",
+    "semester":"1"
+}
+
+#check
+GET http://localhost:3800/course/:courseID
+{
+    "courseID":""
+}

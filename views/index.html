@@ -26,6 +26,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/util.css">
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 <!--===============================================================================================-->
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 	
@@ -84,13 +85,13 @@
 					$.ajax({
 						url:"https://localhost:3800/login",
 						method:"POST",
-						dataType:"json",
-						data:{username:username,password:password},
-					}).done(function(response,xhr,state){
-						console.log(response)
+						data:{username:username,password:password}
+					}).done(function(result,xhr,state){
+						console.log(result)
 					}).fail(function(xhr,state){
 						console.log(xhr)
 					})
+					alert(usename)
 			});
 		});
 		</script>
