@@ -196,14 +196,15 @@
             //    tada = $('#hometable').DataTable()
                 courseidSent = table.row( $(this).parents('tr') ).data();
                 console.log(courseidSent.courseID)
-                $.ajax({
-                    url:'http://192.168.1.45:3800/course/'+courseidSent.courseID,
-                    method:"GET",
-                    data:{courseid:courseidSent.courseID}
-                }).done(function(data){
-                    console.log(data)
-                    window.location = ('./course.html')
-                })
+                window.location.replace("/course/"+courseidSent.courseID);
+                // $.ajax({
+                //     url:'http://192.168.1.45:3800/course/'+courseidSent.courseID,
+                //     method:"GET",
+                //     data:{courseid:courseidSent.courseID}
+                // }).done(function(data){
+                //     console.log(data)
+                //     window.location.replace("/course/"+courseidSent.courseID);
+                // })
                  });
                 },fail:function(xhr){
                     console.log(xhr)

@@ -137,8 +137,11 @@
 <script src="../assets/js/demo.js"></script>
 <script>
         $(document).ready(function(){
+            var url = window.location.pathname;
+            var id = url.substring(url.lastIndexOf('/')+1);
+            console.log(url);
             $.ajax({
-                url: 'http://192.168.1.45:3800/course/'+courseidSent.courseID,
+                url: 'http://192.168.1.45:3800/course/get/'+id,
                 method:"GET",
                 dataType:"json",
             }).done(function(data,xhr,state){
