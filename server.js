@@ -157,7 +157,7 @@ app.get("/home/list/:year/:semester", function(req, res){
 // ==> Get course week by courseID
 app.get("/course/get/:courseID", function(req, res){
     let courseID = req.params.courseID;
-    let sql = "SELECT DISTINCT week.weekNum, course.courseName FROM week INNER JOIN course ON week.courseID = course.courseID WHERE course.courseID = ?";
+    let sql = "SELECT DISTINCT course.courseID, week.weekNum, course.courseName FROM week INNER JOIN course ON week.courseID = course.courseID WHERE course.courseID = ?";
     connection.query(sql, [courseID], function(err, result, fields){
         if(err){
             console.log(err);
@@ -174,7 +174,7 @@ app.get("/course/get/:courseID", function(req, res){
 app.get("/attendance/get/:courseID/:weekNum", function(req, res){
     let courseID = req.params.courseID;
     let weekNum = req.params.weekNum;
-    let sql = "SELECT DISTINCT week.weekNum, student.studentCode, student.studentName, CASE WHEN week.studentStatus = 0 THEN 'Absent' WHEN week.studentStatus = 1 THEN 'Present' END AS studentStatus, course.courseName, course.courseDay, course.startCourse, course.finishCourse FROM ((week INNER JOIN student ON week.studentID = student.studentID) INNER JOIN course ON week.courseID = course.courseID) WHERE week.weekNum = ? AND course.courseID = ? ORDER BY student.studentCode ASC";
+    let sql = "SELECT DISTINCT week.weekNum, student.studentCode,student.studentName,student.studentLastname, CASE WHEN week.studentStatus = 0 THEN 'Absent' WHEN week.studentStatus = 1 THEN 'Present' END AS studentStatus, course.courseName, course.courseDay, course.startCourse, course.finishCourse FROM ((week INNER JOIN student ON week.studentID = student.studentID) INNER JOIN course ON week.courseID = course.courseID) WHERE week.weekNum = ? AND course.courseID = ? ORDER BY student.studentCode ASC";
     connection.query(sql, [weekNum, courseID], function(err, result, fields){
         if(err){
             console.log(err);

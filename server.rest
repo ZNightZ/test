@@ -39,7 +39,7 @@ content-type: application/json
 }
 
 ### Check
-GET http://localhost:3800/course/list
+GET http://localhost:3800/attendance/get/1/1
 
 {
     
