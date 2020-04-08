@@ -67,7 +67,7 @@
 <script>
    
    $(document).ready( function () {
-    var courseID=1;
+    var courseID=5;
     var weekNum=1;
     $.ajax({
     'url': 'http://192.168.1.45:3800/course/'+courseID+'/'+weekNum,
@@ -77,11 +77,12 @@
     console.log(data)
     $('#table').DataTable( {
         data:data,
+        // defaultContent: "<button>Click!</button>",
+        
         "columns": [
-            { data: "studentCode",title:"Student ID" },
+            { data: "studentCode",title:"Student ID"},
             { data: "studentName",title:"Student Name" },
             { data: "studentStatus",title:"Status" },
-            { data: null,title:"Action", "defaultContent": "<button>Click!</button>" }
         ]
     })
 })
@@ -167,7 +168,7 @@
                 </div>
                 <div>
                     
-                        <table id="table" class="stripe" style="width:100%;margin-left:20px">
+                        <table id="table" class="uk-table uk-table-hover uk-table-striped" style="width:100%;margin-left:20px">
                                 <!-- <thead>
                                     <tr>
                                         <th>Student ID </th>
