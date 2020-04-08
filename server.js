@@ -42,7 +42,7 @@ app.listen(port, function () {
 });
 // ----------------------------------------------------------- //
 // ----------------- GET ROUTES START ----------------- //
-app.get("/attendance/:weekNum", function (req, res) {
+app.get("/attendance/:courseID/:weekNum", function (req, res) {
         res.sendFile(__dirname + "/views/attendance.html");   
 });
 app.get("/course/:courseID", function (req, res) {
@@ -171,7 +171,7 @@ app.get("/course/get/:courseID", function(req, res){
 });
 
 // ==> Get week attendance by weekNum of courseID
-app.get("/course/:courseID/:weekNum", function(req, res){
+app.get("/attendance/get/:courseID/:weekNum", function(req, res){
     let courseID = req.params.courseID;
     let weekNum = req.params.weekNum;
     let sql = "SELECT DISTINCT week.weekNum, student.studentCode, student.studentName, CASE WHEN week.studentStatus = 0 THEN 'Absent' WHEN week.studentStatus = 1 THEN 'Present' END AS studentStatus, course.courseName, course.courseDay, course.startCourse, course.finishCourse FROM ((week INNER JOIN student ON week.studentID = student.studentID) INNER JOIN course ON week.courseID = course.courseID) WHERE week.weekNum = ? AND course.courseID = ? ORDER BY student.studentCode ASC";
