@@ -83,7 +83,7 @@
 				var username = $("#username").val();
 				var password = $("#password").val();
 					$.ajax({
-						url:"https://localhost:3800/login",
+						url:"https://192.168.1.45:3800/login",
 						method:"POST",
 						data:{username:username,password:password}
 					}).done(function(result,xhr,state){

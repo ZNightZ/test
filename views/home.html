@@ -231,7 +231,7 @@
             var year = 2020
             var semester = 1
             $.ajax({
-                url: 'http://localhost:3800/home/list/'+year+"/"+semester,
+                url: 'http://192.168.1.45:3800/home/list/'+year+"/"+semester,
                 method:"GET",
                 dataType:"json",
                 data:{year: $("#selectyear").val(),
