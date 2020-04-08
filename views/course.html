@@ -67,18 +67,19 @@
 
             <div class="sidebar-wrapper">
                 <div class="logo" style="text-align: center;">
-                    
-                        <h3>MFU STUDENT ATTENDANT</h3>
-                   
+
+                    <h3>MFU STUDENT ATTENDANT</h3>
+
                 </div>
 
                 <div>
-                    <img style="float:center" class="w-75 p-3 rounded mx-auto d-block"  alt="Responsive image"  src="../assets/img/mfulogo.png">
+                    <img style="float:center" class="w-75 p-3 rounded mx-auto d-block" alt="Responsive image"
+                        src="../assets/img/mfulogo.png">
                 </div>
                 <div class="content" style="text-align: center;">
-                   
-                        <h4>WELCOME</h4>
-                    
+
+                    <h4>WELCOME</h4>
+
                 </div>
                 <ul class="nav">
                     <li class="nav-item active active-pro">
@@ -103,7 +104,7 @@
                 <div class="container-fluid">
                     <h4 style="text-align: center;">COURSE</h4>
                     <div class="row">
-                       <table id="courseTable"></table>
+                        <table id="courseTable"></table>
 
                     </div>
                 </div>
@@ -111,9 +112,9 @@
 
             <footer class="footer" style="bottom:0;width:100%;left:0;position:fixed">
                 <div class="container-fluid">
-                        <p class="copyright text-center" style="text-align: center;">
-                            ©<a href="http://www.google.com">MFU</a>  STUDENT ATTENDANT.
-                        </p>
+                    <p class="copyright text-center" style="text-align: center;">
+                        ©<a href="http://www.google.com">MFU</a> STUDENT ATTENDANT.
+                    </p>
                 </div>
             </footer>
         </div>
@@ -136,27 +137,27 @@
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
 <script>
-        $(document).ready(function(){
-            var url = window.location.pathname;
-            var id = url.substring(url.lastIndexOf('/')+1);
-            console.log(url);
-            $.ajax({
-                url: 'http://192.168.1.45:3800/course/get/'+id,
-                method:"GET",
-                dataType:"json",
-            }).done(function(data,xhr,state){
-                console.log(data)
-                $('#coursetable').DataTable({
-                    data:data,       
+    $(document).ready(function () {
+        var url = window.location.pathname;
+        var id = url.substring(url.lastIndexOf('/') + 1);
+        console.log(url);
+        $.ajax({
+            url: 'http://192.168.1.45:3800/course/get/' + id,
+            method: "GET",
+            dataType: "json",
+        }).done(function (data, xhr, state) {
+            console.log(data)
+            $('#coursetable').DataTable({
+                data: data,
                 "columns": [
-            { data: "weekNum",title:"Number of Week"},
-            {data:null,title:"button","defaultContent": "<button type='button' id='go' class='btn btn-primary'>Information</button>"}
+                    { data: "weekNum", title: "Number of Week" },
+                    { data: null, title: "button", "defaultContent": "<button type='button' id='go' class='btn btn-primary'>Information</button>" }
                 ]
-             })
-                });
-            }).fail(function(xhr){
-                console.log(xhr)
             })
+        });
+    }).fail(function (xhr) {
+        console.log(xhr)
+    })
 
 
             //  function getcourse(id){
@@ -169,7 +170,7 @@
             //    console.log(date[0])
             // })
             // }
-        });
+       
 </script>
 
 </html>
