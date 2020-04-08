@@ -238,7 +238,7 @@
                      semester: $("#semestter").val()
                 },
                 success:function(response){
-                console.log(response[0].courseName)
+                console.log(response)
                 $("#coursecode").html(response[0].courseCode)
                 $("#coursename").html(response[0].courseName)
                 $("#professor").html(response[0].professorName)

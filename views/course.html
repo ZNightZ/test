@@ -103,42 +103,13 @@
                 <div class="container-fluid">
                     <h4 style="text-align: center;">COURSE</h4>
                     <div class="row">
-                        <div class="col-sm-4" style="left:0;margin-top:30px">
-                                <table id="example" class="" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th>Teacher</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Surapol Utama</td>
-                                            </tr>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>Student</th>
-                                            </tr>
-                                            <tr>
-                                                <td>6031302019 Warakron Kanthawon</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6031302019 Warakron Kanthawon</td>
-                                            </tr>
-                                            <tr>
-                                                    <td>6031302019 Warakron Kanthawon</td>
-                                            </tr>
-                                        </tfoot>
-                                </table>
-                        </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-12">
                             <h4 style="text-align: center;">Date time</h4>
                                 <div class="col-md-4" style="center: center">
                                     <div class="card" style="border-radius:20px;width:300%;margin-left:auto;margin-right:auto;text-align:center;height:100%;">
                                         <div class="card-body" >
-                                          <h4 class="card-title">WEEK1</h4>
-                                          <h5>Semester 2</h5>
-                                          <h5>01 / 01 / 2020</h5>
+                                          <h4 class="card-title" id="week">WEEK1</h4>
+                                          <h5 id="semester">Semester 2</h5>
                                           <div class="button-group" style="float: right;">
                                             <button class="btn btn-primary" style="border-radius: 20px;">View</button>
                                           </div>
@@ -148,9 +119,8 @@
                                 <div class="col-md-4" style="center: center">
                                         <div class="card" style="border-radius:20px;width:300%;margin-left:auto;margin-right:auto;text-align:center;height:100%;">
                                             <div class="card-body" >
-                                              <h4 class="card-title">WEEK1</h4>
-                                              <h5>Semester 2</h5>
-                                              <h5>01 / 01 / 2020</h5>
+                                              <h4 class="card-title" id='week1'>WEEK1</h4>
+                                              <h5 id="semester1"> Semester 2</h5>
                                               <div class="button-group" style="float: right;">
                                                 <button class="btn btn-primary" style="border-radius: 20px;">View</button>
                                               </div>
@@ -191,20 +161,34 @@
 <script src="../assets/js/demo.js"></script>
 <script>
         $(document).ready(function(){
+
+        //    getCourse(id);
+            var courseID=1
             $.ajax({
-                url: 'http://localhost:3800/home/list',
+                url: 'http://localhost:3800/course/'+courseID,
                 method:"GET",
-            }).done(function(data,state,xhr){
+                dataType:"json",
+            }).done(function(data,xhr,state){
                 console.log(data)
-                for (i=0; i<data.length; i++) {
-                $("#coursecode").html(data[i].courseCode)
-                $("#coursename").html(data[i].courseName)
-                $("#professor").html(data[i].professorName)
-                console.log(data[i]);
-                }
-            }).fail(function(xhr,state){
+                $("#week").html("Week "+data[0].weekNum)
+                $("#semester").html(data[0].courseName)
+                $("#week1").html("Week "+data[1].weekNum)
+                $("#semester1").html(data[0].courseName)
+            }).fail(function(xhr){
                 console.log(xhr)
             })
+
+
+            //  function getcourse(id){
+            //      var id=1
+            //     $.ajax({
+            //     url: 'http://localhost:3800/course/'+id,
+            //     method:"GET",
+            //     dataType:"json",
+            // }).done(function(data,state,xhr){
+            //    console.log(date[0])
+            // })
+            // }
         });
 </script>
 
