@@ -170,7 +170,7 @@
             var id = url.substring(url.lastIndexOf('/')+1);
           
             $.ajax({
-                url: 'http://localhost:3800/course/get/'+id,
+                url: 'http://192.168.1.45:3800/course/get/'+id,
                 method:"GET",
                 dataType:"json",
                 data:{
@@ -189,7 +189,7 @@
             //    tada = $('#hometable').DataTable()
                 weekSent = table.row( $(this).parents('tr') ).data();
                 console.log(weekSent.weekNum)
-                window.location.replace("/attendance/"+weekSent.weekNum);
+                window.location.replace("/attendance/"+id+"/"+weekSent.weekNum);
                 // $.ajax({
                  });
                 },fail:function(xhr){
