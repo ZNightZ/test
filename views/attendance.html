@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/mfulogo.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Attendanec</title>
+    <title>Home</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
         name='viewport' />
     <!--     Fonts and icons     -->
@@ -150,7 +150,7 @@
             <div class="content">
                 <div class="container-fluid">
                     <h4 style="text-align: center;">COURSE</h4>
-                    <table id="table" class="uk-table uk-table-hover uk-table-striped" style="text-align: center"></table>
+                    <table id="hometable" class="uk-table uk-table-hover uk-table-striped" style="text-align: center"></table>
                 </div>
             <footer class="footer" style="bottom:0;width:100%;left:0;position:fixed">
                 <div class="container-fluid">
@@ -166,24 +166,46 @@
 
 <script>
         $(document).ready(function(){
-            var url = window.location.pathname;
-            var weekNum = url.substring(url.lastIndexOf('/')+1);
-            var courseID = url.split("/")[2];
+            // var d = new Date();
+            // var y = new d.getFullYear();
+            var year = 2020
+            var semester = 2
             $.ajax({
-                url: 'http://192.168.1.45:3800/attandance/get/'+courseID+"/"+weekNum,
+                url: 'http://192.168.1.45:3800/home/list/',
                 method:"GET",
                 dataType:"json",
+                data:{year: $("#selectyear").val(),
+                     semester: $("#semestter").val()
+                },
                 success:function(data){
                 console.log(data)
-               table = $('#table').DataTable( {
+               table = $('#hometable').DataTable( {
                 data:data,       
                 "columns": [
-            { data: "studentCode",title:"Student ID"},
-            { data: "studentName",title:"Student Name"},
-            { data: "studentLastname",title:"Student Surename"},
-            { data: "studentStatus",title:"Status"},
+            { data: "courseCode",title:"Course Code"},
+            { data: "courseName",title:"Course Name" },
+            { data: "professorName",title:"Professor Name" },
+            { data: "courseDay",title:"Day" },
+            { data: "year",title:"Year" },
+            { data: "semester",title:"Semester" },
+            {data:null,title:"button","defaultContent": "<button type='button' id='go' class='btn btn-primary'>Information</button>"}
                 ]
              })
+            //  click button
+            $('#hometable tbody').on( 'click', 'button', function () {
+            //    tada = $('#hometable').DataTable()
+                courseidSent = table.row( $(this).parents('tr') ).data();
+                console.log(courseidSent.courseID)
+                window.location.replace("/course/"+courseidSent.courseID);
+                // $.ajax({
+                //     url:'http://192.168.1.45:3800/course/'+courseidSent.courseID,
+                //     method:"GET",
+                //     data:{courseid:courseidSent.courseID}
+                // }).done(function(data){
+                //     console.log(data)
+                //     window.location.replace("/course/"+courseidSent.courseID);
+                // })
+                 });
                 },fail:function(xhr){
                     console.log(xhr)
                 }          
