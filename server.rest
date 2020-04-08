@@ -8,7 +8,7 @@ content-type: application/json
 }
 
 ### Check GET
-GET http://localhost:3800/home/list
+GET http://localhost:3800/course/get/5
 content-type: application/json
 
 ### Delete

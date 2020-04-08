@@ -42,10 +42,10 @@ app.listen(port, function () {
 });
 // ----------------------------------------------------------- //
 // ----------------- GET ROUTES START ----------------- //
-app.get("/attendance", function (req, res) {
+app.get("/attendance/:weekNum", function (req, res) {
         res.sendFile(__dirname + "/views/attendance.html");   
 });
-app.get("/course", function (req, res) {
+app.get("/course/:courseID", function (req, res) {
         res.sendFile(__dirname + "/views/course.html");
 });
 app.get("/home", function (req, res) {
@@ -155,7 +155,7 @@ app.get("/home/list/:year/:semester", function(req, res){
 });
 
 // ==> Get course week by courseID
-app.get("/course/:courseID", function(req, res){
+app.get("/course/get/:courseID", function(req, res){
     let courseID = req.params.courseID;
     let sql = "SELECT DISTINCT week.weekNum, course.courseName FROM week INNER JOIN course ON week.courseID = course.courseID WHERE course.courseID = ?";
     connection.query(sql, [courseID], function(err, result, fields){
