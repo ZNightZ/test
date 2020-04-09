@@ -38,6 +38,7 @@ connection.connect(function (err) {
 app.listen(port, function () {
     console.log("-------------------------------");
     console.log("Server at port " + port);
+    console.log(__dirname);
     console.log("-------------------------------");
 });
 // ----------------------------------------------------------- //
@@ -48,12 +49,12 @@ app.get("/attendance/:courseID/:weekNum", function (req, res) {
 app.get("/course/:courseID", function (req, res) {
         res.sendFile(__dirname + "/views/course.html");
 });
-app.get("/home", function (req, res) {
+app.get("/", function (req, res) {
     res.sendFile(__dirname + "/views/home.html");
 });
-app.get("/", function (req, res) {
-        res.sendFile(__dirname + "/views/index.html");
-});
+// app.get("/", function (req, res) {
+//         res.sendFile(__dirname + "/views/index.html");
+// });
 // ----------------- GET ROUTES END ------------------- //
 // --------------------------------------------------------------------------------------------------------------- //
 // ----------------- RASPBERRY PI START ------------------- //
