@@ -86,12 +86,7 @@
                     
                 </div>
                 <ul class="nav">
-                    <li class="nav-item active active-pro">
-                        <a class="nav-link active" href="/manage/logout">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <p>Logout</p>
-                        </a>
-                    </li>
+                   
                 </ul>
                 </ul>
             </div>
@@ -171,12 +166,9 @@
             var year = 2020
             var semester = 2
             $.ajax({
-                url: 'http://192.168.1.33:3800/home/list/',
+                url: 'http://192.168.1.45:3800/home/list/',
                 method:"GET",
                 dataType:"json",
-                data:{year: $("#selectyear").val(),
-                     semester: $("#semestter").val()
-                },
                 success:function(data){
                 console.log(data)
                table = $('#hometable').DataTable( {
@@ -196,15 +188,14 @@
             //    tada = $('#hometable').DataTable()
                 courseidSent = table.row( $(this).parents('tr') ).data();
                 console.log(courseidSent.courseID)
-                window.location.replace("/course/"+courseidSent.courseID);
-                // $.ajax({
-                //     url:'http://192.168.1.45:3800/course/'+courseidSent.courseID,
-                //     method:"GET",
-                //     data:{courseid:courseidSent.courseID}
-                // }).done(function(data){
-                //     console.log(data)
-                //     window.location.replace("/course/"+courseidSent.courseID);
-                // })
+                $.ajax({
+                    url:'http://192.168.1.45:3800/course/'+courseidSent.courseID,
+                    method:"GET",
+                    data:{courseid:courseidSent.courseID}
+                }).done(function(data){
+                    console.log(data)
+                    window.location.replace("http://192.168.1.45:3800/course/"+courseidSent.courseID);
+                })
                  });
                 },fail:function(xhr){
                     console.log(xhr)
